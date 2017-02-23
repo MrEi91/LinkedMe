@@ -54,11 +54,11 @@
               <div class="input-field col s6">
                 <i class="material-icons prefix">mail</i>
                 <input id="email" type="email" class="validate">
-                <label for="register-usernam">First Name</label>
+                <label for="register-usernam">Email</label>
               </div>
               <div class="input-field col s6">
                 <i class="material-icons prefix">lock</i>
-                <input id="password" type="tel" class="validate">
+                <input id="password" type="password" class="validate">
                 <label for="register-password">Pasword</label>
               </div>
             </div>
@@ -88,7 +88,7 @@
 
 
     <div class="container">
-      <div class="section"> -->
+      <div class="section">
 
         <!--   Icon Section   -->
          <div class="row">
@@ -118,7 +118,7 @@
               <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
             </div>
           </div>
-        </div> -->
+        </div>
 
       </div>
 
@@ -177,14 +177,20 @@
 
   function register() {
     $.ajax({
-      url: 'http://localhost:3000/api/users',
+      url: 'http://localhost:3000/add',
       type: 'POST',
       data: {
-        username: $('#register-username').val(),
-        telephone: $('#register-telephone').val()
+        firstname: $('#firstname').val(),
+        lastname: $('#lastname').val(),
+        email: $('#email').val()
       },
       success: function(data){
         console.log(data);
+        if(data == 'email geus aya') {
+          alert('EMAIL GEUS AYA KEHED')
+        } else {
+          window.open('http://www.google.com')
+        }
       }
     })
   }
