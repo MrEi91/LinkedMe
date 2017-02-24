@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "mrei91",
-    "password": "mrei91",
+    "username": "firmanPebrizal",
+    "password": "1234",
     "database": "linkedMe-db",
     "host": "127.0.0.1",
     "dialect": "postgres"
