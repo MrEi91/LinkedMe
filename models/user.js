@@ -7,6 +7,8 @@ module.exports = function(sequelize, DataTypes) {
     first_name: DataTypes.STRING,
     last_name: DataTypes.STRING,
     birthdate: DataTypes.DATE,
+    salt : DataTypes.STRING,
+    hashPassword : DataTypes.STRING,
     email:{
       type:DataTypes.STRING,
       validate:{
@@ -47,7 +49,7 @@ module.exports = function(sequelize, DataTypes) {
       associate: function(models) {
         // associations can be defined here
       }
-    }
+    },
     hooks:{
       beforeCreate:function(value, option){
         let unique = "abcdefghijklmnopqrsstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -60,10 +62,10 @@ module.exports = function(sequelize, DataTypes) {
         value.salt = salt
 
         const hash = crypto.createHmac('sha512', salt)
-                           .update(value.password)
+                           .update(value.hashPassword)
                            .digest('hex')
 
-        value.password = hash
+        value.hashPassword = hash
 
       }
     }

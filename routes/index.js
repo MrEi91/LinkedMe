@@ -18,14 +18,14 @@ router.post('/add', function(req, res){
     email:req.body.email
   }
 }).then((data) => {
-  console.log(data);
     if(!data) {
       models.User.create({
         first_name : req.body.firstname,
         last_name: req.body.lastname,
-        email: req.body.email
+        email: req.body.email,
+        hashPassword : req.body.password
       }).then(function(users){
-        res.send(users)
+        res.send('users')
       })
     } else {
       res.send('email geus aya')
