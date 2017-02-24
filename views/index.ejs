@@ -74,21 +74,6 @@
     <div class="section no-pad-bot" id="index-banner">
       <div class="container">
         <br><br>
-        <!-- untuk login -->
-        <form class="col s12" action="/" method="post">
-          <div class="input-field col s6">
-            <i class="material-icons prefix">mail</i>
-            <input id="firstname" type="text" class="validate">
-            <label for="register-firstname">Email</label>
-          </div>
-          <div class="input-field col s6">
-            <i class="material-icons prefix">lock</i>
-            <input id="password" type="password" class="validate">
-            <label for="register-lastname">Password</label>
-          </div>
-          <a href="#!" class="modal-trigger waves-effect waves-light btn">Log in</a>
-        </form>
-
         <h1 class="header center orange-text">Starter Template</h1>
         <div class="row center">
           <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
@@ -97,8 +82,6 @@
           <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a>
         </div>
         <br><br>
-
-
 
       </div>
     </div>
@@ -204,7 +187,7 @@
       success: function(data){
         console.log(data);
         if(data == 'email geus aya') {
-            window.location.href = ('http://www.google.com')
+          alert('Email is already in use!')
         } else {
           window.location.href = ('http://www.google.com')
         }
