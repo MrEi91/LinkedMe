@@ -48,8 +48,10 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-        User.belongsToMany(models.User,{through:'FriendList', foreignKey: 'requesterID'})
-        User.belongsToMany(models.User,{through:'FriendList', foreignKey: 'approverID'})
+        // User.hasMany(models.FriendList, {foreignKey: 'requesterID'})
+        // User.hasMany(models.FriendList, {foreignKey: 'approverID'})
+        User.belongsToMany(models.User,{through:'FriendList', foreignKey: 'requesterID', as: 'request'})
+        User.belongsToMany(models.User,{through:'FriendList', foreignKey: 'approverID', as : 'approver'})
       }
     },
     hooks:{
@@ -69,7 +71,9 @@ module.exports = function(sequelize, DataTypes) {
 
         value.hashPassword = hash
 
-      }
+      },
+
+
     }
   });
   return User;
