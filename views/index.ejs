@@ -78,15 +78,15 @@
         <form class="col s12" action="/" method="post">
           <div class="input-field col s6">
             <i class="material-icons prefix">mail</i>
-            <input id="firstname" type="text" class="validate">
-            <label for="register-firstname">Email</label>
+            <input id="email_login" type="text" class="validate">
+            <label for="email-login">Email</label>
           </div>
           <div class="input-field col s6">
             <i class="material-icons prefix">lock</i>
-            <input id="password" type="password" class="validate">
-            <label for="register-lastname">Password</label>
+            <input id="password_login" type="password" class="validate">
+            <label for="password-login">Password</label>
           </div>
-          <a href="#!" class="modal-trigger waves-effect waves-light btn">Log in</a>
+          <a href="#!" class="modal-trigger waves-effect waves-light btn" onclick="login()">Login</a>
         </form>
 
         <h1 class="header center orange-text">Starter Template</h1>
@@ -208,6 +208,24 @@
           alert('EMAIL GEUS AYA KEHED')
         } else {
           window.open('http://www.google.com')
+        }
+      }
+    })
+  }
+
+  function login() {
+    $.ajax({
+      url: 'http://localhost:3000/login',
+      type: 'POST',
+      data: {
+        email: $('#email_login').val(),
+        password: $('#password_login').val()
+      },
+      success: function(data){
+        if(data.success){
+          window.location = 'http://localhost:3000/home'
+        }else{
+          alert(data.message)
         }
       }
     })
