@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+          // associations can be defined here
         FriendList.belongsTo(models.User, {foreignKey: 'requesterID'})
         FriendList.belongsTo(models.User, {foreignKey: 'approverID'})
       }
