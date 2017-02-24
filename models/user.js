@@ -6,6 +6,7 @@ module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define('User', {
     first_name: DataTypes.STRING,
     last_name: DataTypes.STRING,
+    birthdate: DataTypes.DATE,
     email:{
       type:DataTypes.STRING,
       validate:{
@@ -49,10 +50,10 @@ module.exports = function(sequelize, DataTypes) {
     }
     // hooks:{
     //   beforeCreate:function(value, option){
-    //     let unique = "abcdefghijklmnopqrsstuvwxyz0123456789"
+    //     let unique = "abcdefghijklmnopqrsstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     //     let salt = ''
     //
-    //     for (let i = 0; i < 9; i++) {
+    //     for (let i = 0; i < 10; i++) {
     //       salt += unique[Math.floor(Math.random() * unique.length)]
     //     }
     //
