@@ -8,7 +8,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/home', function(req, res, next) {
-  res.render('dummy_ejs_for_success_login')
+  if (req.session.login) {
+    res.render('dummy_ejs_for_success_login')
+  }else{
+    res.redirect('/')
+  }
 });
 
 router.get('/get', function(req, res, next) {
@@ -32,6 +36,12 @@ router.post('/login',function(req,res,next){
     }
   })
 
+})
+
+
+router.get('/logout', function (req,res) {
+  req.session.destroy()
+  res.redirect('/')
 })
 
 
