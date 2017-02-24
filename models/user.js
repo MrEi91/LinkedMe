@@ -48,25 +48,25 @@ module.exports = function(sequelize, DataTypes) {
         // associations can be defined here
       }
     }
-    // hooks:{
-    //   beforeCreate:function(value, option){
-    //     let unique = "abcdefghijklmnopqrsstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    //     let salt = ''
-    //
-    //     for (let i = 0; i < 10; i++) {
-    //       salt += unique[Math.floor(Math.random() * unique.length)]
-    //     }
-    //
-    //     value.salt = salt
-    //
-    //     const hash = crypto.createHmac('sha512', salt)
-    //                        .update(value.password)
-    //                        .digest('hex')
-    //
-    //     value.password = hash
-    //
-    //   }
-    // }
+    hooks:{
+      beforeCreate:function(value, option){
+        let unique = "abcdefghijklmnopqrsstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        let salt = ''
+
+        for (let i = 0; i < 10; i++) {
+          salt += unique[Math.floor(Math.random() * unique.length)]
+        }
+
+        value.salt = salt
+
+        const hash = crypto.createHmac('sha512', salt)
+                           .update(value.password)
+                           .digest('hex')
+
+        value.password = hash
+
+      }
+    }
   });
   return User;
 };
